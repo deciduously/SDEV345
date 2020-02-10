@@ -1,0 +1,3 @@
+My personal favorite application of linked lists is actually as a core language component of a Lisp dialect.  The word Lisp derives from the phrase LISt Processer.  Writing Lisp code is essentially directly writing a string representation of an AST, and in it's p[urest form (found in languages like Scheme), linked lists are the only structure you have to work with.
+
+To demonstrate, I'll walk through the evaluation of a very simple form: `(eval (cons (head '(+ -)) '(1 2)))`.  This Lisp function call is expected to evaluate 3.
