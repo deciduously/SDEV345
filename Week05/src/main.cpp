@@ -3,7 +3,7 @@
 * Linked List
 * Implement a linked list and menu-driven CLI
 * Ben Lovy
-* February 10, 2020
+* February 11, 2020
 */
 
 #include <iostream>
@@ -27,14 +27,14 @@ public:
     {
         Node *trav = head;
         int ret = 0;
-        while (trav->next)
+        while (trav->val != val)
         {
-            if (trav->val == val)
-                return ret;
+            if (trav->next == nullptr)
+                return -1;
             ret++;
             trav = trav->next;
         }
-        return -1;
+        return ret;
     }
     /**Insert a value at the end of the list
      * \param Value to add*/
@@ -136,14 +136,14 @@ public:
                 char buffer[BUFFER_SIZE];
                 case '1':
                 {
-                    std::cout << "Enter double to insert: ";
+                    std::cout << "Enter int to insert: ";
                     std::cin >> buffer;
                     list.insertEnd(atof(buffer));
                     break;
                 }
                 case '2':
                 {
-                    std::cout << "Enter double to remove: ";
+                    std::cout << "Enter int to remove: ";
                     std::cin >> buffer;
                     bool res = list.remove(atof(buffer));
                     std::cout << (res ? "Removed" : "Not found") << "\n";
@@ -156,9 +156,9 @@ public:
                 }
                 case '4':
                 {
-                    std::cout << "Enter double to search for: ";
+                    std::cout << "Enter int to search for: ";
                     std::cin >> buffer;
-                    std::cout << "Fiind result: " << list.find(atof(buffer)) << "\n";
+                    std::cout << "Find result: " << list.find(atof(buffer)) << "\n";
                     break;
                 }
                 default:
@@ -171,6 +171,6 @@ public:
 
 int main()
 {
-    ListMenu<double>().cli();
+    ListMenu<int>().cli();
     return 0;
 }
