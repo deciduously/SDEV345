@@ -3,7 +3,7 @@
 * Circular Linked List
 * Implement a circular linked list and menu-driven CLI
 * Ben Lovy
-* February 29, 2020
+* March 1, 2020
 */
 
 #include <iostream>
@@ -41,17 +41,14 @@ public:
         // Create new node
         Node *ins = new Node(val);
         if (empty())
-        {
-            // traverse to end
-            Node *trav = first;
-            while (trav->next != nullptr)
-            {
-                trav = trav->next;
-            }
-            trav->next = ins;
-        }
-        else
             first = ins;
+        else
+        {
+            last->next = ins;
+            ins->prev = last;
+        }
+        // Store as final
+        last = ins;
     }
     /**Insert a value at the front of the list
      * \param Value to add
@@ -132,7 +129,7 @@ public:
             cout << trav->val << " ";
             trav = trav->prev;
         }
-        cout << "]";
+        cout << "]\n";
     }
 
     /**Destructor*/
@@ -209,7 +206,7 @@ public:
             }
             case '4':
             {
-                cout << "Popped from front: " << list.pop_front() << "\n";
+                cout << "Popped from back: " << list.pop_front() << "\n";
                 break;
             }
             case '5':
